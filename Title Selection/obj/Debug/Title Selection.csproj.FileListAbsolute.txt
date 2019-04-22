@@ -1,0 +1,11 @@
+C:\Users\Arman\Projects\Title Selection\Title Selection\bin\Debug\Title Selection.exe.config
+C:\Users\Arman\Projects\Title Selection\Title Selection\bin\Debug\Title Selection.exe
+C:\Users\Arman\Projects\Title Selection\Title Selection\bin\Debug\Title Selection.pdb
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title Selection.csprojResolveAssemblyReference.cache
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title_Selection.frmMain.resources
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title_Selection.Properties.Resources.resources
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title Selection.csproj.GenerateResource.cache
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title Selection.csproj.CoreCompileInputs.cache
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title Selection.exe
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title Selection.pdb
+C:\Users\Arman\Projects\Title Selection\Title Selection\obj\Debug\Title_Selection.frmSelectTitle.resources
