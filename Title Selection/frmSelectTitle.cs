@@ -22,12 +22,7 @@ namespace Title_Selection
         {
             string localIP = GetLocalIPAddress();
 
-            if (true)
-            {
-                MessageBox.Show("ՈՒսանողի անունը մուտքագրված չէ");
-            }
-
-            else if (txtFirstName.Text.Trim() == string.Empty)
+            if (txtFirstName.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("ՈՒսանողի անունը մուտքագրված չէ");
             }

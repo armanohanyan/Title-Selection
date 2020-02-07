@@ -10,7 +10,6 @@ namespace Title_Selection
 {
     public static class SQLHelper
     {
-        //public const string SQLString = "Server=192.168.11.197\\ecrserv,55555;Initial Catalog = ODB; User ID = CrmUser; Password=e03ceca7c9e449fea28abb499fd0c556;Persist Security Info=False;Encrypt=True;TrustServerCertificate=True";
         public const string connectionString = "Data Source=.\\SQL2008R2;Initial Catalog=dbTitleSelection;Integrated Security=True";
         //public const string connectionString = "Server=IT-Dep03;Initial Catalog = dbTitleSelection; User ID = TitleSelector; Password=xMr{Km8<sWc#7a]B;Persist Security Info=False;Encrypt=True;TrustServerCertificate=True";
 

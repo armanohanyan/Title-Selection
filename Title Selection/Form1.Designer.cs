@@ -44,9 +44,11 @@
             this.dgvTitleList.ContextMenuStrip = this.contextMenuStrip1;
             this.dgvTitleList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTitleList.Location = new System.Drawing.Point(0, 160);
+            this.dgvTitleList.MultiSelect = false;
             this.dgvTitleList.Name = "dgvTitleList";
             this.dgvTitleList.Size = new System.Drawing.Size(1118, 430);
             this.dgvTitleList.TabIndex = 0;
+            this.dgvTitleList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTitleList_CellMouseDown);
             // 
             // contextMenuStrip1
             // 
