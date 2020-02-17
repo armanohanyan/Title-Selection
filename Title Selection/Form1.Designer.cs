@@ -48,6 +48,8 @@
             this.dgvTitleList.Name = "dgvTitleList";
             this.dgvTitleList.Size = new System.Drawing.Size(1118, 430);
             this.dgvTitleList.TabIndex = 0;
+            this.dgvTitleList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTitleList_CellContentClick);
+            this.dgvTitleList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTitleList_CellDoubleClick);
             this.dgvTitleList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTitleList_CellMouseDown);
             // 
             // contextMenuStrip1

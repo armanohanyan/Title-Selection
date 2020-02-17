@@ -110,5 +110,132 @@ namespace Title_Selection
                 return false;
             }
         }
+
+        public static bool CheckSelectionStatus()
+        {
+            try
+            {
+                DataTable dt = default(DataTable);
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cnn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "CheckSelectionSelectionStatus";
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            dt = new DataTable();
+                            da.Fill(dt);
+                        }
+                        cnn.Close();
+                    }
+                }
+                //var x = dt.Rows[0]["isSelectionAllowed"];
+                return Convert.ToBoolean(dt.Rows[0]["isSelectionAllowed"]);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static void StartSelection()
+        {
+            //try
+            {
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cnn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "dbo.StartSelection";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    throw;
+            //}
+        }
+
+        public static void EndSelection()
+        {
+            //try
+            {
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cnn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "dbo.EndSelection";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    throw;
+            //}
+        }
+
+        public static void MoveToArchive()
+        {
+            //try
+            {
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cnn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "dbo.MoveToArchive";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    throw;
+            //}
+        }
+
+        public static void ResetSelection()
+        {
+            //try
+            {
+                using (SqlConnection cnn = new SqlConnection(connectionString))
+                {
+                    cnn.Open();
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cnn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "dbo.ResetSelection";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    throw;
+            //}
+        }
     }
 }

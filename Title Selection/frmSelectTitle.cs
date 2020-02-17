@@ -20,30 +20,39 @@ namespace Title_Selection
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            string localIP = GetLocalIPAddress();
+            bool isSelectionAllowed = SQLHelper.CheckSelectionStatus();
+            if (isSelectionAllowed == true)
+            {
+                string localIP = GetLocalIPAddress();
 
-            if (txtFirstName.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("ՈՒսանողի անունը մուտքագրված չէ");
-            }
-            else if (txtLastName.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("ՈՒսանողի ազգանունը մուտքագրված չէ");
-            }
-            else if (txtMiddleName.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("ՈՒսանողի հայրանունը մուտքագրված չէ");
+                if (txtFirstName.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("ՈՒսանողի անունը մուտքագրված չէ");
+                }
+                else if (txtLastName.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("ՈՒսանողի ազգանունը մուտքագրված չէ");
+                }
+                else if (txtMiddleName.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("ՈՒսանողի հայրանունը մուտքագրված չէ");
+                }
+                else
+                {
+                    int id = Convert.ToInt32(lblTitleID.Text);
+                    string firstName = txtFirstName.Text.Trim();
+                    string middleName = txtMiddleName.Text.Trim();
+                    string lastName = txtLastName.Text.Trim();
+                    DateTime date = dateTimePicker1.Value;
+                    SQLHelper.SelectTheme(id, firstName, middleName, lastName, date);
+                    this.Close();
+                }
             }
             else
             {
-                int id = Convert.ToInt32(lblTitleID.Text);
-                string firstName = txtFirstName.Text.Trim();
-                string middleName = txtMiddleName.Text.Trim();
-                string lastName = txtLastName.Text.Trim();
-                DateTime date = dateTimePicker1.Value;
-                SQLHelper.SelectTheme(id, firstName, middleName, lastName, date);
-                this.Close();
+                MessageBox.Show("Համակարգն արգելափակված է", "Զգուշացում");
             }
+
         }
 
         private void frmSelectTitle_Load(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace Title_Selection
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            bool isSelectionAllowed = false;
+            bool isSelectionAllowed = SQLHelper.CheckSelectionStatus();
             if (isSelectionAllowed == false)
             {
                 MessageBox.Show("Համակարգն արգելափակված է", "Զգուշացում");
@@ -49,18 +49,28 @@ namespace Title_Selection
 
             if (dgvTitleList.SelectedRows.Count > 0)
             {
-                if (dgvTitleList.SelectedRows[0].Cells[2].Value is true)
+                bool isSelectionAllowed = SQLHelper.CheckSelectionStatus();
+                if (isSelectionAllowed == true)
                 {
-                    MessageBox.Show("Տվյալ թեման արդեն իկս ընտրված է։");
-                    //throw new Exception("Տվյալ թեման արդեն իկս ընտրված է");
+                    if (dgvTitleList.SelectedRows[0].Cells[2].Value is true)
+                    {
+                        MessageBox.Show("Տվյալ թեման արդեն իկս ընտրված է։");
+                        //throw new Exception("Տվյալ թեման արդեն իկս ընտրված է");
+                    }
+                    else
+                    {
+                        frmSelectTitle f = new frmSelectTitle();
+                        f.txtTitle.Text = title;
+                        f.lblTitleID.Text = rownumber.ToString();
+                        f.ShowDialog();
+                    }
                 }
                 else
                 {
-                    frmSelectTitle f = new frmSelectTitle();
-                    f.txtTitle.Text = title;
-                    f.lblTitleID.Text = rownumber.ToString();
-                    f.ShowDialog();
+                    MessageBox.Show("Համակարգն արգելափակված է", "Զգուշացում");
                 }
+
+
 
 
                 //int id = Convert.ToInt32(dgvTitleList.SelectedRows[0].Cells[0].Value.ToString());
@@ -163,5 +173,68 @@ namespace Title_Selection
                 dgvTitleList.Focus();
             }
         }
+
+        private void dgvTitleList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvTitleList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //try
+            //{
+            DataTable dt = SQLHelper.ListOfThemes();
+            int rownumber = Convert.ToInt32(dgvTitleList.SelectedRows[0].Cells[0].Value);
+            string title = dt.Rows[0]["Թեմա"].ToString();
+
+            if (dgvTitleList.SelectedRows.Count > 0)
+            {
+                bool isSelectionAllowed = SQLHelper.CheckSelectionStatus();
+                if (isSelectionAllowed == true)
+                {
+                    if (dgvTitleList.SelectedRows[0].Cells[2].Value is true)
+                    {
+                        MessageBox.Show("Տվյալ թեման արդեն իկս ընտրված է։");
+                        //throw new Exception("Տվյալ թեման արդեն իկս ընտրված է");
+                    }
+                    else
+                    {
+                        frmSelectTitle f = new frmSelectTitle();
+                        f.txtTitle.Text = title;
+                        f.lblTitleID.Text = rownumber.ToString();
+                        f.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Համակարգն արգելափակված է", "Զգուշացում");
+                }
+
+
+
+
+                //int id = Convert.ToInt32(dgvTitleList.SelectedRows[0].Cells[0].Value.ToString());
+                //SQLHelper.SelectTheme(id);
+
+                //dgvTitleList.DataSource = null;
+                //dgvTitleList.DataSource = SQLHelper.ListOfThemes();
+
+                //MessageBox.Show("Done");
+            }
+            else
+            {
+                MessageBox.Show("Անհրաժեշտ է ընտրել թեմա։");
+            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    throw;
+            //}
+
+
+        }
+
     }
 }
+
